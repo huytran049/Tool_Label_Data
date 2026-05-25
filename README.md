@@ -39,19 +39,6 @@ SMCLib/                    Thư viện VB.NET phụ trợ
 
 Một số DLL/model lớn không được commit lên GitHub. Cần đặt lại chúng từ release artifact hoặc thư mục runtime riêng trước khi chạy.
 
-## Các File Không Đưa Lên GitHub
-
-Không commit các thư mục/file sau:
-
-- `1.Runtime/`, `0.Runtime/`, `Runtime/`
-- `packages/`
-- `bin/`, `obj/`, `.vs/`
-- `*.dll`, `*.exe`, `*.pdb`
-- `*.weights`, `*.onnx`, `*.pt`
-- `*.bmp`, dataset ảnh lớn, video, archive `*.rar`, `*.zip`, `*.7z`
-- `Data/`, `models/`, `runs/`, `wandb/`, `Output/`, `Logs/`, `Temp/`
-
-Nếu cần chia sẻ runtime/model, nên đưa vào GitHub Releases, Google Drive, OneDrive hoặc Git LFS thay vì commit trực tiếp vào repo.
 
 ## Khởi Tạo Sau Khi Clone
 
@@ -198,31 +185,3 @@ Tất cả tọa độ được normalize theo kích thước ảnh, dùng đư�
 - Bấm `Start Training` để chạy `train.cmd`.
 - File output weight sẽ xuất hiện trong `Data/Output/`.
 - Chọn weight mong muốn và bấm `Use this model` để copy sang model đang chạy.
-
-## Cách Commit Lên GitHub
-
-Sau khi đã có `.gitignore`, chạy:
-
-```powershell
-git init
-git add .
-git status --short
-```
-
-Kiểm tra `git status` không có các file lớn như `1.Runtime`, `0.Runtime`, `packages`, `*.dll`, `*.weights`, `*.onnx`, `*.pt`, `*.bmp`, `*.rar`.
-
-Nếu danh sách file hợp lý:
-
-```powershell
-git commit -m "Initial commit"
-git branch -M main
-git remote add origin <repo-url>
-git push -u origin main
-```
-
-## Lưu Ý Hiện Tại
-
-- Project đang có một số `HintPath` trỏ tới runtime local, vì vậy clone repo mới có thể cần đặt lại DLL đúng vị trí hoặc chỉnh lại reference.
-- `packages/` không commit, cần restore NuGet trước khi build.
-- `Data/`, model weights và dataset không commit, cần tạo/tải lại riêng cho mỗi máy.
-- Nên upload file runtime/model mẫu lên GitHub Releases và ghi link tải trong README nếu muốn người khác chạy nhanh.
