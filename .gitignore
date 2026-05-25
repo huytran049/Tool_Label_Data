@@ -1,0 +1,53 @@
+# Visual Studio / MSBuild
+.vs/
+bin/
+obj/
+Debug/
+Release/
+x64/
+x86/
+*.user
+*.suo
+*.cache
+*.log
+*.pdb
+*.ilk
+*.idb
+
+# NuGet packages are restored from packages.config / project references
+packages/
+*.nupkg
+
+# Local runtime/build output and vendor native DLLs
+0.Runtime/
+1.Runtime/
+Runtime/
+**/0.Runtime/
+**/1.Runtime/
+**/Runtime/
+*.dll
+*.exe
+
+# Training artifacts, datasets, and model weights
+*.weights
+*.onnx
+*.pt
+*.engine
+*.wandb
+wandb/
+runs/
+runs_*/
+Data/
+models/
+Temp/
+Logs/
+
+# Large local image/sample/archive files
+*.bmp
+*.rar
+*.zip
+*.7z
+
+# OS files
+Thumbs.db
+Desktop.ini
